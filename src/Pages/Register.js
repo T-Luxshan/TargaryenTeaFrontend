@@ -57,7 +57,7 @@ function App() {
             placeholder="Password"
             required
           />
-          <button type="submit" className="signup-button">Sin Up</button>
+          <button type="submit" className="signup-button">Sign Up</button>
         </form>
       </div>
     </div>
