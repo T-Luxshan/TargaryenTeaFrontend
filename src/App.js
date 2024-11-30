@@ -1,10 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import ProductPage from './Pages/ProductPage';
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <Router>
+      <Routes>
+        {/* <Route path='/teaPage' Component={ProductPage} /> */}
+        <Route path ='/teaPage' Component={ProductPage} />
+      </Routes>
+      </Router>
     </div>
   );
 }
