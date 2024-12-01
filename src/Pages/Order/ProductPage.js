@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
-import ProductCard from "../Components/ProductCard";
-import productData from "../Data/product.json"; // Importing the JSON file
+import ProductCard from "../../Components/Order/ProductCard";
+import productData from "../../Data/product.json"; // Importing the JSON file
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
