@@ -80,14 +80,25 @@ const ProductDetails = ({ productDetails }) => {
   return (
     <Box sx={{ padding: 4, maxWidth: 500 }}>
       {/* Product Title */}
-      <Typography variant="h4" fontWeight="bold" gutterBottom textAlign="left">
+      <Typography
+        variant="h4"
+        fontWeight="bold"
+        gutterBottom
+        textAlign="left"
+        sx={{ fontFamily: "FuturaPTMedium" }}
+      >
         {name}
       </Typography>
 
       {/* Review and Product Code */}
-      <Typography variant="body2" color="text.secondary" textAlign="left">
+      <Typography
+        variant="body2"
+        color="#0b692d"
+        textAlign="left"
+        sx={{ fontFamily: "FuturaPTLight", fontWeight: "1000" }}
+      >
         Be the first to review this product
-        <span style={{ marginLeft: 8, fontWeight: "bold" }}>
+        <span style={{ marginLeft: 12, fontWeight: "bold" }}>
           Product Code: {productCode}
         </span>
       </Typography>
@@ -97,7 +108,7 @@ const ProductDetails = ({ productDetails }) => {
         variant="h5"
         fontWeight="bold"
         textAlign="left"
-        sx={{ marginTop: 2, color: "black" }}
+        sx={{ marginTop: 2, color: "black", fontFamily: "AGaramondPro" }}
       >
         RS {price.toFixed(2)}
       </Typography>
@@ -117,7 +128,7 @@ const ProductDetails = ({ productDetails }) => {
         <IconButton
           size="medium"
           onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
-          sx={{ color: "white", flex: 1 }}
+          sx={{ color: "white", flex: 1, fontFamily: "FuturaCyrillicLight" }}
         >
           <RemoveIcon />
         </IconButton>
@@ -133,6 +144,7 @@ const ProductDetails = ({ productDetails }) => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            fontFamily: "FuturaCyrillicLight",
           }}
         >
           {quantity}
@@ -140,7 +152,7 @@ const ProductDetails = ({ productDetails }) => {
         <IconButton
           size="medium"
           onClick={() => setQuantity((prev) => prev + 1)}
-          sx={{ color: "white", flex: 1 }}
+          sx={{ color: "white", flex: 1, fontFamily: "FuturaCyrillicLight" }}
         >
           <AddIcon />
         </IconButton>
@@ -148,7 +160,12 @@ const ProductDetails = ({ productDetails }) => {
 
       {/* Product Description */}
       <Divider sx={{ marginY: 3 }} />
-      <Typography variant="body2" color="text.secondary" textAlign="left">
+      <Typography
+        variant="body2"
+        color="text.secondary"
+        textAlign="left"
+        sx={{ fontFamily: "AGaramondPro", fontSize: "18px" }}
+      >
         {description}
       </Typography>
 
@@ -165,6 +182,8 @@ const ProductDetails = ({ productDetails }) => {
           color: "white",
           borderRadius: 0,
           border: "2px solid transparent",
+          fontFamily: "FuturaPTBold",
+          fontSize: "18px",
           "&:hover": {
             backgroundColor: "white",
             color: "#204436",
@@ -172,7 +191,7 @@ const ProductDetails = ({ productDetails }) => {
           },
         }}
       >
-        Add to Cart
+        ADD TO CART
       </Button>
 
       {/* Sidebar Drawer */}
@@ -198,8 +217,13 @@ const ProductDetails = ({ productDetails }) => {
                 mb: 2,
               }}
             >
-              <Typography variant="h5">CART</Typography>
-              <IconButton onClick={() => setDrawerOpen(false)}>
+              <Typography variant="h5" sx={{ fontFamily: "Futura" }}>
+                CART
+              </Typography>
+              <IconButton
+                onClick={() => setDrawerOpen(false)}
+                sx={{ fontFamily: "FuturaCyrillicLight" }}
+              >
                 <CloseIcon />
               </IconButton>
             </Box>
@@ -240,8 +264,17 @@ const ProductDetails = ({ productDetails }) => {
 
                   {/* Product Name, Price, and Cart Quantity */}
                   <Box sx={{ display: "flex", flexDirection: "column" }}>
-                    <Typography variant="h6">{item.name}</Typography>
-                    <Typography>RS {item.price.toFixed(2)}</Typography>
+                    <Typography
+                      variant="h6"
+                      sx={{ fontFamily: " FuturaPTLight" }}
+                    >
+                      {item.name}
+                    </Typography>
+                    <Typography
+                      sx={{ fontFamily: " FuturaPTLight", fontWeight: "bold" }}
+                    >
+                      RS {item.price.toFixed(2)}
+                    </Typography>
                     <Box
                       sx={{
                         display: "flex",
@@ -255,7 +288,10 @@ const ProductDetails = ({ productDetails }) => {
                       <IconButton
                         size="medium"
                         onClick={() => handleCartQuantityChange(item.name, -1)}
-                        sx={{ flex: 1 }}
+                        sx={{
+                          flex: 1,
+                          fontFamily: " FuturaCyrillicLight",
+                        }}
                       >
                         <RemoveIcon />
                       </IconButton>
@@ -269,6 +305,7 @@ const ProductDetails = ({ productDetails }) => {
                           display: "flex",
                           justifyContent: "center",
                           alignItems: "center",
+                          fontFamily: " FuturaCyrillicLight",
                         }}
                       >
                         {item.quantity}
@@ -276,7 +313,7 @@ const ProductDetails = ({ productDetails }) => {
                       <IconButton
                         size="medium"
                         onClick={() => handleCartQuantityChange(item.name, 1)}
-                        sx={{ flex: 1 }}
+                        sx={{ flex: 1, fontFamily: " FuturaCyrillicLight" }}
                       >
                         <AddIcon />
                       </IconButton>
@@ -286,7 +323,11 @@ const ProductDetails = ({ productDetails }) => {
                   {/* Delete Icon */}
                   <IconButton
                     onClick={() => handleRemoveProduct(item.name)}
-                    sx={{ marginLeft: 2, fontSize: "1.5rem" }}
+                    sx={{
+                      marginLeft: 2,
+                      fontSize: "1.0rem",
+                      fontFamily: " FuturaPTLight",
+                    }}
                   >
                     <DeleteIcon />
                   </IconButton>
@@ -301,8 +342,12 @@ const ProductDetails = ({ productDetails }) => {
           <Box>
             <Divider sx={{ marginY: 2 }} />
             <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-              <Typography variant="h6">Subtotal</Typography>
-              <Typography variant="h6">RS {subtotal.toFixed(2)}</Typography>
+              <Typography variant="h6" sx={{ fontFamily: "AGaramondPro" }}>
+                Subtotal
+              </Typography>
+              <Typography variant="h6" sx={{ fontFamily: "AGaramondPro" }}>
+                RS {subtotal.toFixed(2)}
+              </Typography>
             </Box>
             <Box sx={{ display: "flex", gap: 1 }}>
               <Button
@@ -312,6 +357,7 @@ const ProductDetails = ({ productDetails }) => {
                   backgroundColor: "#204436",
                   color: "white",
                   borderRadius: 0,
+                  fontFamily: "FuturaPTBold",
                   "&:hover": {
                     backgroundColor: "#102218",
                   },
