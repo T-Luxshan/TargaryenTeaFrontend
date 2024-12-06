@@ -1,18 +1,14 @@
-import './App.css';
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import ProductPage from './Pages/Order/ProductPage';
-import CartPage from './Pages/Order/CartPage';
-// import CartSummaryPage from './Pages/CartSummaryPage';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Product from "./Pages/Order/Product";
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <Routes>
-        <Route path ='/teaPage' Component={ProductPage} />
-        <Route path ='/cart' Component={CartPage} />
-        {/* <Route path ='/teaPage/cart' Component={CartSummaryPage} /> */}
-      </Routes>
+        <Routes>
+          <Route path="/page" Component={Product} />
+        </Routes>
       </Router>
     </div>
   );
