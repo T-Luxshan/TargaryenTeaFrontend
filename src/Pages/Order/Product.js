@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Grid, Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
+import Grid from "@mui/material/Grid2";
 import ProductImage from "../../Components/Order/ProductImage";
 import ProductDetails from "../../Components/Order/ProductDetails";
 
