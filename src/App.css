@@ -61,4 +61,19 @@
   src: url('/public/fonts/FuturaCyrillicBold.ttf');
 }
 
+@font-face {
+  font-family: FuturaPTMedium;
+  src: url('/public/fonts/futura-medium-bt.ttf') ;  
+}
+
+@font-face {
+  font-family: FuturaPTBold;
+  src: url('/public/fonts/Futura PT Bold.ttf') ;  
+}
+@font-face {
+  font-family: FuturaPTLight;
+  src: url('/public/fonts/futura-pt-light.otf') ;  
+}
+
+
 
