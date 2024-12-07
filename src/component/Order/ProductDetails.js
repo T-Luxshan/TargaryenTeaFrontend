@@ -11,13 +11,15 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
 import CloseIcon from "@mui/icons-material/Close";
+import axios from "axios";
+import OrderService from "../../Service/orderService";
 
 const ProductDetails = ({ productDetails }) => {
   const [quantity, setQuantity] = useState(1); // Product detail page quantity
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]); // To store the cart items
 
-  const { name, price, description,  image_url } = productDetails;
+  const { name, price, description, sku_code, image_url } = productDetails;
 
   // Load cart items from localStorage on component mount
   useEffect(() => {
@@ -77,6 +79,31 @@ const ProductDetails = ({ productDetails }) => {
     0
   );
 
+
+  const handleCheckout = async () => {
+    const orderDTO = {
+      userId: "suhirabalarajan@gmail.com", // have to fetch --------------------------------------------
+      orderLineItemsDtoList: cartItems.map((item) => ({
+        skuCode: item.sku_code,
+        price: item.price,
+        quantity: item.quantity,
+        productName: item.name,       
+      })),
+    };
+  
+    try {
+      const response = await OrderService.checkOutList(orderDTO);
+      console.log("Order placed successfully:", response.data);
+      // Clear cart after successful checkout
+      setCartItems([]);
+      localStorage.removeItem("cart");
+      alert("Order placed successfully!");
+    } catch (error) {
+      console.error("Error placing order:", error.response || error.message);
+      alert("Failed to place order. Please try again later.");
+    }
+  };
+
   return (
     <Box sx={{ padding: 4, maxWidth: 500 }}>
       {/* Product Title */}
@@ -91,17 +118,17 @@ const ProductDetails = ({ productDetails }) => {
       </Typography>
 
       {/* Review and Product Code */}
-      {/* <Typography
+      <Typography
         variant="body2"
         color="#0b692d"
         textAlign="left"
         sx={{ fontFamily: "FuturaPTLight", fontWeight: "1000" }}
       >
-        Be the first to review this product
-        <span style={{ marginLeft: 12, fontWeight: "bold" }}>
-          Product Code: {productCode}
+        {/* Be the first to review this product */}
+        <span style={{ marginLeft: 3, fontWeight: "bold" }}>
+          Product Code: {sku_code}
         </span>
-      </Typography> */}
+      </Typography>
 
       {/* Price */}
       <Typography
@@ -352,6 +379,7 @@ const ProductDetails = ({ productDetails }) => {
             <Box sx={{ display: "flex", gap: 1 }}>
               <Button
                 variant="contained"
+                onClick={handleCheckout}
                 sx={{
                   flex: 1,
                   backgroundColor: "#204436",
@@ -361,6 +389,7 @@ const ProductDetails = ({ productDetails }) => {
                   "&:hover": {
                     backgroundColor: "#102218",
                   },
+                  
                 }}
               >
                 Checkout
