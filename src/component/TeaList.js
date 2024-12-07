@@ -38,8 +38,8 @@ export default function TeaList() {
   }, []);
 
   return (
-    <Box sx={{ flexGrow: 1, display: 'flex', backgroundColor: 'pink', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
-    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ width: '50%' }}>
+    <Box sx={{ flexGrow: 1, display: 'flex',  width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+    <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ width: '40%' }}>
       {products.map((product, index) => (
         <Grid key={index} item xs={2} sm={3} md={3}>
           <Item>
