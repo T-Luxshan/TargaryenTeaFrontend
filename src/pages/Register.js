@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './Login.css';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import Logo from "../images/logo.png";
 
 function App() {
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   async function registerUser(event) {
     event.preventDefault();
-    const response = await fetch('http://localhost:1337/api/register', {
-      method: 'POST',
+    const response = await fetch("http://localhost:1337/api/register", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         name,
@@ -23,14 +24,27 @@ function App() {
     });
 
     const data = await response.json();
-    if (data.status === 'ok') {
-      navigate('/login'); // Redirect to login after successful registration
+    if (data.status === "ok") {
+      navigate("/login"); // Redirect to login after successful registration
     }
   }
 
   return (
     <div className="signup-container">
       <div className="signup-box">
+        <img
+          src={Logo}
+          alt="Logo"
+          style={{
+            width: "150px", // Decreased size
+            height: "90px", // Adjusted proportionally
+            marginTop: "10px",
+            display: "block", // Ensure it's treated as a block element
+            marginLeft: "auto", // Center horizontally
+            marginRight: "auto",
+          }}
+        />
+
         <h1>Sign Up</h1>
         <form onSubmit={registerUser}>
           <input
@@ -57,7 +71,9 @@ function App() {
             placeholder="Password"
             required
           />
-          <button type="submit" className="signup-button">Sign Up</button>
+          <button type="submit" className="signup-button">
+            Sign Up
+          </button>
         </form>
       </div>
     </div>
