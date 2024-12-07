@@ -7,6 +7,8 @@ import TeaPage from "./pages/Tea";
 import TradePage from "./pages/Trade";
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Product from "../src/pages/Order/Product";
+import { AdminDashboard } from './pages/AdminDashboard';
 function App() {
   return (
     <div className="App">
@@ -25,6 +27,9 @@ function App() {
         <Route path="/trade" element ={<TradePage/>}/>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/each/:id" element={<Product/>} />
+        <Route path="/admin/*" element={<AdminDashboard />} /> {/* Route for AdminDashboard */}
+
 
       </Routes>
       </BrowserRouter>

@@ -5,6 +5,9 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid2';
 import GiftHamper from "../images/giftHampers.webp";
 import Button from '@mui/material/Button';
+import { useNavigate } from 'react-router-dom'; 
+
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
   ...theme.typography.body2,
@@ -17,6 +20,12 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function GiftHampers() {
+  const navigate = useNavigate(); 
+
+  const handleClick = () => {
+    navigate('/tea'); 
+  };
+
   return (
     <Box sx={{ display: 'flex', width: '100%', height: '520px' }}>
   
@@ -56,7 +65,7 @@ export default function GiftHampers() {
         Let me know if you'd like further tweaks!
         </p>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 4,mr:"50px" }}>
-        <Button variant="outlined" style={{borderColor:"#c9c6b9",color:"green",fontFamily:"Poppin"}}>Shop Now !</Button>
+        <Button variant="outlined" style={{borderColor:"#c9c6b9",color:"green",fontFamily:"Poppin"}} onClick={handleClick}>Shop Now !</Button>
       </Box>
       </Box>
     </Box>
