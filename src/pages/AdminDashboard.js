@@ -1,3 +1,5 @@
+//AdminPage
+
 import { Routes, Route } from 'react-router-dom';
 import { Box, ThemeProvider, createTheme } from '@mui/material';
 import Sidebar from '../component/Sidebar';

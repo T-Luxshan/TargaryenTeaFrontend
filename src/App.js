@@ -28,7 +28,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/each/:id" element={<Product/>} />
-        <Route path="/admin/*" element={<AdminDashboard />} /> {/* Route for AdminDashboard */}
+        <Route path="/admin/*" element={<AdminDashboard />} />
 
 
       </Routes>

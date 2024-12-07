@@ -1,3 +1,5 @@
+//AdminPage
+
 import React, { useState } from "react";
 import { Grid, Container, Typography, Box, Button } from "@mui/material";
 import products from "../Data/Products.json";
