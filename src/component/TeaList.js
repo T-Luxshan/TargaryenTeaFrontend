@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid2';
 import { useEffect, useState } from 'react';
 import ProductService from "../Service/productService";
 import { SettingsPower } from '@mui/icons-material';
+import { useNavigate } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -21,29 +22,34 @@ export default function TeaList() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate=useNavigate();
+
   useEffect(() => {
     const loadBestSellers = async () => {
       try {
-        setLoading(true); // Set loading to true before fetch
+        setLoading(true); 
         const data = await ProductService.fetchAllProducts();
         setProducts(data);
-        setLoading(false); // Set loading to false once data is loaded
+        setLoading(false);
       } catch (error) {
         setError('Failed to fetch all products');
-        setLoading(false); // Set loading to false on error
+        setLoading(false);
         console.error("Failed to fetch all products", error);
       }
     };
     loadBestSellers();
   }, []);
 
+  const handleProductClick = (id) => {
+    navigate(`/each/${id}`); // Navigate to the product details page with the product ID
+  };
+
   return (
     <Box sx={{ flexGrow: 1, display: 'flex',  width: '100%', alignItems: 'center', justifyContent: 'center' }}>
     <Grid container spacing={{ xs: 2, md: 3 }} columns={{ xs: 4, sm: 8, md: 12 }} sx={{ width: '40%' }}>
       {products.map((product, index) => (
         <Grid key={index} item xs={2} sm={3} md={3}>
-          <Item>
-            {/* Render your product information here */}
+          <Item onClick={() => handleProductClick(product.id)} style={{ cursor: 'pointer' }}>
             <h3>{product.name}</h3>
             <img src={product.image_url} alt={product.name} style={{ width: '100%', height: 'auto' }} />
             <p>Price: Rs. {product.price}</p>

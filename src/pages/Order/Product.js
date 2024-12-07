@@ -7,6 +7,10 @@ import NavBar  from "../../component/NavBar";
 import Logo from  "../../images/logo.png";
 import { styled } from '@mui/material/styles';
 import Footer from "../../component/Footer";
+import { useParams } from 'react-router-dom';
+import { useEffect, useState }  from "react";
+import ProductService from "../../Service/productService";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
   ...theme.typography.body2,
@@ -19,17 +23,41 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 const Product = () => {
+  const { id } = useParams(); 
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  // Example product data
-  const product = {
-    imageUrl:
-      "https://ahmadtea.lk/cdn/shop/files/Camomile_Lemongrass20teabags_700x.jpg?v=1715244390", // Replace with the correct image path from public folder
-    name: "Camomile & Lemongrass",
-    price: 550.0,
-    description:
-      "Camomile & Lemongrass Infusion is a deliciously relaxing herbal tea that soothes with every sip. In this delicately fragrant blend, lemongrass adds an exotic citrus twist to much-loved camomile.The ProductDetails component is a React functional component designed for displaying product information and managing a shopping cart. It provides a detailed view of a product, including its name, price, description, and an interactive feature for adding the product to a shopping cart. Users can adjust the product quantity before adding it to the cart and manage the cart items via a sidebar (Drawer) that dynamically updates based on user interactions.",
-    productCode: "0006", // Adding product code for details
-  };
+  useEffect(() => {
+    const fetchProductDetails = async () => {
+      try {
+        setLoading(true);
+        const data = await ProductService.fetchProductById(id); // Fetch product details using the ID
+        console.log(data)
+        setProduct(data);
+        setLoading(false);
+      } catch (error) {
+        setError('Failed to fetch product details');
+        setLoading(false);
+        console.error("Failed to fetch product details", error);
+      }
+    };
+    fetchProductDetails();
+  }, [id]);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
+
+  // // Example product data
+  // const product = {
+  //   imageUrl:
+  //     "https://ahmadtea.lk/cdn/shop/files/Camomile_Lemongrass20teabags_700x.jpg?v=1715244390", // Replace with the correct image path from public folder
+  //   name: "Camomile & Lemongrass",
+  //   price: 550.0,
+  //   description:
+  //     "Camomile & Lemongrass Infusion is a deliciously relaxing herbal tea that soothes with every sip. In this delicately fragrant blend, lemongrass adds an exotic citrus twist to much-loved camomile.The ProductDetails component is a React functional component designed for displaying product information and managing a shopping cart. It provides a detailed view of a product, including its name, price, description, and an interactive feature for adding the product to a shopping cart. Users can adjust the product quantity before adding it to the cart and manage the cart items via a sidebar (Drawer) that dynamically updates based on user interactions.",
+  //   productCode: "0006", // Adding product code for details
+  // };
 
   return (
     <>
@@ -44,7 +72,7 @@ const Product = () => {
         {/* Left: Product Image */}
         <Grid item xs={12} md={6}>
           <Box sx={{ display: "flex", justifyContent: "center" }}>
-            <ProductImage imageUrl={product.imageUrl} />
+            <ProductImage imageUrl={product.image_url} />
           </Box>
         </Grid>
 

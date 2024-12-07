@@ -1,11 +1,11 @@
 import React from "react";
 import { Box } from "@mui/material";
 
-const ProductImage = ({ imageUrl }) => {
+const ProductImage = ({ image_url }) => {
   return (
     <Box
       component="img"
-      src={imageUrl}
+      src={image_url}
       alt="Product"
       sx={{
         width: "100%",

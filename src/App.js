@@ -16,7 +16,7 @@ function App() {
         <Route path="/story" element ={<StoryPage/>}/>
         <Route path="/tea" element ={<TeaPage/>}/>
         <Route path="/trade" element ={<TradePage/>}/>
-        <Route path="/page" element={<Product/>} />
+        <Route path="/each/:id" element={<Product/>} />
 
       </Routes>
       </BrowserRouter>

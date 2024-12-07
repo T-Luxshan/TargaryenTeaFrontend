@@ -17,7 +17,7 @@ const ProductDetails = ({ productDetails }) => {
   const [isDrawerOpen, setDrawerOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]); // To store the cart items
 
-  const { name, price, description, productCode, imageUrl } = productDetails;
+  const { name, price, description,  image_url } = productDetails;
 
   // Load cart items from localStorage on component mount
   useEffect(() => {
@@ -35,7 +35,7 @@ const ProductDetails = ({ productDetails }) => {
     const newItem = {
       name,
       price,
-      imageUrl,
+      image_url,
       quantity,
     };
 
@@ -91,7 +91,7 @@ const ProductDetails = ({ productDetails }) => {
       </Typography>
 
       {/* Review and Product Code */}
-      <Typography
+      {/* <Typography
         variant="body2"
         color="#0b692d"
         textAlign="left"
@@ -101,7 +101,7 @@ const ProductDetails = ({ productDetails }) => {
         <span style={{ marginLeft: 12, fontWeight: "bold" }}>
           Product Code: {productCode}
         </span>
-      </Typography>
+      </Typography> */}
 
       {/* Price */}
       <Typography

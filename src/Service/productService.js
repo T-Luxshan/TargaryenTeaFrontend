@@ -27,7 +27,7 @@ const productService = axios.create({
       return Promise.reject(error);
     }
   );
-    //---------------------------Best Sellers----------------------
+    //---------------------------Get all product----------------------
     const fetchAllProducts = async () => {
         try {
           const response = await productService.get('/api/v1/product');
@@ -39,9 +39,21 @@ const productService = axios.create({
         }
       };
 
+  //---------------------------Get By Id ---------------------
+  const fetchProductById = async (id) => {
+    try {
+      const response = await productService.get(`/api/v1/product/${id}`);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching prodcuts :', error);
+      throw error;
+    }
+  };
 
     export default {
         productService,
         fetchAllProducts,
+        fetchProductById
         
       };
